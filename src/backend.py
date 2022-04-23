@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 
 
-url = ""
+url = "http://192.168.2.222:1929"
 
 
 def send_notification(data, id):
@@ -66,7 +66,8 @@ def feed_noname(url):
                 img_list.append(img["src"])
             dict[blog_feed.entries[i].id.split("=")[1]] = {
                 "title": blog_feed.entries[i].title,
-                "unshortened-text": unshortened_text,
+                "unshortened-text": re.sub(r'(?<=[.,])(?=[^/s])', r' ',
+                                           unshortened_text),
                 "shortened-text": re.sub(r'(?<=[.,])(?=[^/s])', r' ',
                                          convert_text(unshortened_text,
                                          blog_feed.entries[i].title)),
