@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    # data = json.load(open('samplearticles.json', 'r'))
+    data = json.load(open('unshorted.json', 'r'))
     articlesToShow = [
         {
             "id": "1",
@@ -21,6 +21,7 @@ def index():
             "url": "https://netzpolitik.org",
         }
     ]
-    return render_template("index.html", articlesToShow=articlesToShow)
+    return render_template("index.html", articlesToShow=data)
+    #return render_template("index.html", articlesToShow=articlesToShow)
 
 app.run(host="0.0.0.0", port=1929)
