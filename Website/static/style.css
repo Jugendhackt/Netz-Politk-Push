@@ -7,19 +7,11 @@ body {
     border-width: 3mm;
     border-color: black;
     border-style: solid;
-    background-color: rgba(0, 0, 0, 0.041);
-}
-
-#everything {
-    border-width: 3mm;
-    border-color: black;
-    border-style: solid;
     border-radius: 4.5mm;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    outline-width: 3mm;
+    outline-color: black;
+    outline-style: solid;
+    background-color: rgba(0, 0, 0, 0.041);
 }
 
 .container {
@@ -34,7 +26,7 @@ article {
     border-width: 1px;
     border-style: inset;
     border-color: rgb(43, 19, 0);
-    border-radius: 4px;
+    border-radius: 1mm;
     background-color: rgba(230, 104, 0, 0.137);
     margin: 10px;
     padding: 10px;
