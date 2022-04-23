@@ -39,9 +39,13 @@
         {% endfor %}-->
         {% for id in articlesToShow.keys(): %}
         <article id="{{id}}" class="row">
-            <h2>{{articlesToShow[id]["title"]}}</h2>
+
+            <div>
+                <h2>{{articlesToShow[id]["title"]}}</h2>
+                <p>von Name</p>
+            </div>
             <p>{{articlesToShow[id]["unshorted-text"]}}</p> <!-- To Change!! -->
-            <a class="readmorelink" href="{{articlesToShow[id]["link"]}}">Mehr dazu lesen</a>
+            <a class="readmorelink" href="{{articlesToShow[id][" link"]}}">Mehr dazu lesen</a>
         </article>
         {% endfor %}
         <div class="col-xs-12 text-center">

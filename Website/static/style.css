@@ -40,6 +40,25 @@ article {
     padding: 10px;
 }
 
+article div {
+    display: flex;
+    align-items: baseline;
+
+}
+
+article div p {
+    white-space: nowrap;
+    font-style: italic;
+
+}
+
+
+
+
+
+
+
+
 .readmorelink {
     font-size: 85%;
 }
