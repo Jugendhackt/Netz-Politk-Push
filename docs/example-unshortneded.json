@@ -1,0 +1,12 @@
+Alle_Artikel = [
+  {
+    "title": "Titel",
+    "text": "Blabla",
+    "link": "https://*/*"
+  },
+  {
+    "title": "Titel",
+    "text": "Blabla",
+    "link": "https://*/*"
+  }
+]
