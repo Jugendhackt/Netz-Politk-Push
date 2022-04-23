@@ -4,8 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+feedparser = "*"
+requests = "*"
+summarizer = "*"
+bs4 = "*"
+datetime = "*"
 flask = "*"
-black = "*"
 
 [dev-packages]
 
