@@ -1,3 +1,11 @@
-article {
+html {
     margin: 10px;
+}
+
+article {
+    border-width: 1px;
+    border-style: inset;
+    border-color: black;
+    margin: 10px;
+    padding: 10px;
 }
