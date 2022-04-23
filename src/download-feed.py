@@ -17,10 +17,13 @@ def feed_noname(url, path):
         dict = {}
     blog_feed = feedparser.parse(url)
     for i in range(len(blog_feed.entries)):
+        print(blog_feed.entries[i].keys())
+        print(blog_feed.entries[i].summary)
         if not blog_feed.entries[i].id.split("=")[1] in dict.keys():
             dict[blog_feed.entries[i].id.split("=")[1]] = {
                 "title": blog_feed.entries[i].title,
                 "unshorted-text": BeautifulSoup(str(blog_feed.entries[i].content[0]["value"]), features="html.parser").get_text(),
+                "author": blog_feed.entries[i].author,
                 "link": blog_feed.entries[i].link,
                 "date": blog_feed.entries[i].published
             }
