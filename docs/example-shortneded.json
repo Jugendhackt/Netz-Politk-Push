@@ -1,13 +1,13 @@
 Alle_Artikel = {
   "<id>":{
     "title"           : "Titel",
-    "unshorted-text"  : "Blabla",
+    "shorted-text"    : "Blabla",
     "link"            : "https://*/*",
     "date"            : "",
   },
   "<id>":{
     "title"           : "Titel",
-    "unshorted-text"  : "Blabla",
+    "shorted-text"    : "Blabla",
     "link"            : "https://*/*",
     "date"            : "",
   }
