@@ -19,5 +19,5 @@ def in_json(jsn):
         jsn[keys[i]]['shorted_text'] = str(convert_text(jsn[keys[i]]['unshorted-text'],jsn[keys[i]]['title']))
     return jsn
 
-new_array = (in_json(jsn))
+new_json = (in_json(jsn))
 
