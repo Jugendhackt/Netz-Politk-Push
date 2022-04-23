@@ -1,10 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 
-html {}
+html {
+    /*color: black;*/
+}
 
 body {
     font-family: 'Work Sans', sans-serif;
-    margin: 5px;
+    margin: ;
+    min-height: 100vh;
+    border-width: 3mm;
+    border-color: black;
+    border-style: solid;
+    background-color: rgba(0, 0, 0, 0.041);
+}
+
+#everything {
+    border-width: 3mm;
+    border-color: black;
+    border-style: solid;
+    border-radius: 4.5mm;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }
 
 .container {
@@ -33,7 +52,17 @@ footer {
     background-color: lightgrey;
     position: fixed;
     height: 6.3mm;
-    width: calc(100vw - 10px);
-    bottom: 0;
+    width: calc(100vw - 4mm);
+    bottom: 2mm;
+    margin: 0;
+    visibility: hidden;
+}
+
+footer:hover {
+    background-color: lightgrey;
+    position: fixed;
+    height: 6.3mm;
+    width: calc(100vw - 4mm);
+    bottom: 2mm;
     margin: 0;
 }

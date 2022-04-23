@@ -1,11 +1,12 @@
 from flask import Flask
 from flask import render_template
+import json
 
 app = Flask(__name__)
 
-
 @app.route("/")
 def index():
+    # data = json.load(open('samplearticles.json', 'r'))
     articlesToShow = [
         {
             "id": "1",
