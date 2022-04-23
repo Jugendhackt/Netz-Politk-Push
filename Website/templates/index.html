@@ -40,8 +40,9 @@
         {% for id in articlesToShow.keys(): %}
         <article id="{{id}}" class="row">
             <h2>{{articlesToShow[id]["title"]}}</h2>
-            <p>{{articlesToShow[id]["unshorted-text"]}}</p> <!-- To Change!! -->
-            <a class="readmorelink" href="{{articlesToShow[id]["link"]}}">Mehr dazu lesen</a>
+            <img class="col-xs-12 col-md-5" src="https://cdn.netzpolitik.org/wp-upload/2022/04/eu_apps_flagge-860x484.jpg" />
+            <p class="col-md-7">{{articlesToShow[id]["shortened-text"]}}</p>
+            <a href="{{articlesToShow[id]["link"]}}">Mehr dazu lesen</a>
         </article>
         {% endfor %}
         <div class="col-xs-12 text-center">

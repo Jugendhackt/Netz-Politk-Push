@@ -2,7 +2,6 @@
 
 body {
     font-family: 'Work Sans', sans-serif;
-    margin: ;
     min-height: 100vh;
     border-width: 3mm;
     border-color: black;
@@ -32,8 +31,13 @@ article {
     padding: 10px;
 }
 
-.readmorelink {
+article img {
+    width: 50%;
+}
+
+article a {
     font-size: 85%;
+    text-align: right;
 }
 
 footer {
