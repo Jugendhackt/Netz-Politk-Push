@@ -1,12 +1,16 @@
 Alle_Artikel = [
   {
     "title": "Titel",
-    "text": "Blabla",
-    "link": "https://*/*"
+    "text" : "Blabla",
+    "link" : "https://*/*",
+    "date" : "",
+    "id"   : "<replace(title, ' ', '-) + date>"
   },
   {
     "title": "Titel",
-    "text": "Blabla",
-    "link": "https://*/*"
+    "text" : "Blabla",
+    "link" : "https://*/*",
+    "date" : "",
+    "id"   : ""
   }
 ]
