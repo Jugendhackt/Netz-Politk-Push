@@ -1,34 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 
-html {
-    
-}
+html {}
 
 body {
     font-family: 'Work Sans', sans-serif;
     margin: 5px;
 }
 
+.container {
+    margin-bottom: 8.8mm;
+}
+
 h1 {
     font-size: 3rem;
-
 }
 
 article {
     border-width: 1px;
     border-style: inset;
-    border-color: black;
+    border-color: rgb(43, 19, 0);
+    border-radius: 4px;
+    background-color: rgba(230, 104, 0, 0.137);
     margin: 10px;
     padding: 10px;
-
 }
 
 .readmorelink {
     font-size: 85%;
-
-
 }
 
 footer {
     background-color: lightgrey;
+    position: fixed;
+    height: 6.3mm;
+    width: calc(100vw - 10px);
+    bottom: 0;
+    margin: 0;
 }
