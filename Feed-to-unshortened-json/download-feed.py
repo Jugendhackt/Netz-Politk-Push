@@ -1,6 +1,6 @@
 import feedparser
 import json
-import re
+from bs4 import BeautifulSoup
 
 
 def write_json_data(str, path):
@@ -20,7 +20,7 @@ def feed_noname(url, path):
         if not blog_feed.entries[i].id.split("=")[1] in dict.keys():
             dict[blog_feed.entries[i].id.split("=")[1]] = {
                 "title": blog_feed.entries[i].title,
-                "unshorted-text": re.sub("<*>", " ", str(blog_feed.entries[i].content)),
+                "unshorted-text": BeautifulSoup(str(blog_feed.entries[i].content), features="html.parser").get_text(),
                 "link": blog_feed.entries[i].link,
                 "date": blog_feed.entries[i].published
             }
