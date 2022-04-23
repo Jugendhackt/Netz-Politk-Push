@@ -7,18 +7,24 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 
 
-def send_notification(data):
+url = ""
+
+
+def send_notification(data, id):
     text = "shortened-text"
+    link = data["link"]
     if(len(data["unshortened-text"]) < len(data["shortened-text"])
             or len(data["unshortened-text"]) < 250):
         text = "unshortened-text"
+    if len(url) > 8:
+        link = url + "#" + id
     requests.post("https://ntfy.sh/Netz-Politik-News-Push",
                   data=data[text].encode("utf-8"),
                   headers={
                           "Title": data["title"].encode("utf-8"),
                           "Priority": "urgent",
                           "Tags": "warning",
-                          "Click": data["link"].encode("utf-8"),
+                          "Click": link.encode("utf-8"),
                           "date": data["date"].encode("utf-8")
                       })
 
@@ -35,10 +41,10 @@ def write_json_data(str, path):
 
 def feed_noname(url):
     try:
-        with open("unshortened.json", "r") as data:
+        with open("data.json", "r") as data:
             dict = json.loads(data.read())
     except:
-        write_json_data({}, "unshortened.json")
+        write_json_data({}, "data.json")
         dict = {}
     dict_old = dict.copy()
     blog_feed = feedparser.parse(url)
@@ -51,6 +57,8 @@ def feed_noname(url):
                     "figure").decompose()
                 unshortened_text = re.sub(
                     r'(?<=[.,])(?=[^/s])', r' ', beautifulsoup_object.get_text())
+            beautifulsoup_object = BeautifulSoup(
+                str(blog_feed.entries[i].content[0]["value"]), features="html.parser")
             img_source = beautifulsoup_object.find_all("img")
             img_list = []
             for img in img_source:
@@ -71,9 +79,10 @@ def feed_noname(url):
                 dict[i]["date"], '%a, %d %b %Y %H:%M:%S %z'), i))
         date_sorted_list_keys.sort(key=lambda item: item, reverse=True)
         for i in range(len(dict)-len(dict_old)):
-            send_notification(dict[date_sorted_list_keys[i][1]])
+            send_notification(
+                dict[date_sorted_list_keys[i][1]], date_sorted_list_keys[i][1])
         write_json_data(str(date_sorted_list_keys), "sorted_keys.json")
-    write_json_data(dict, "unshortened.json")
+    write_json_data(dict, "data.json")
 
 
 def everything():
