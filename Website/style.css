@@ -1,5 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
 html {
-    margin: 10px;
+    
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+
 }
 
 article {
@@ -8,4 +19,15 @@ article {
     border-color: black;
     margin: 10px;
     padding: 10px;
+
+}
+
+.readmorelink {
+    font-size: 85%;
+
+
+}
+
+footer {
+    background-color: lightgrey;
 }
