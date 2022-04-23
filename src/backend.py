@@ -51,14 +51,15 @@ def feed_noname(url):
     for i in range(len(blog_feed.entries)):
         if not blog_feed.entries[i].id.split("=")[1] in dict.keys():
             beautifulsoup_object = BeautifulSoup(
-                str(blog_feed.entries[i].content[0]["value"]), features="html.parser")
+                str(blog_feed.entries[i].content[0]["value"]),
+                features="html.parser")
             if beautifulsoup_object.find("figure") is not None:
                 beautifulsoup_object.find(
                     "figure").decompose()
-                unshortened_text = re.sub(
-                    r'(?<=[.,])(?=[^/s])', r' ', beautifulsoup_object.get_text())
+            unshortened_text = beautifulsoup_object.get_text()
             beautifulsoup_object = BeautifulSoup(
-                str(blog_feed.entries[i].content[0]["value"]), features="html.parser")
+                    str(blog_feed.entries[i].content[0]["value"]),
+                    features="html.parser")
             img_source = beautifulsoup_object.find_all("img")
             img_list = []
             for img in img_source:
@@ -66,7 +67,9 @@ def feed_noname(url):
             dict[blog_feed.entries[i].id.split("=")[1]] = {
                 "title": blog_feed.entries[i].title,
                 "unshortened-text": unshortened_text,
-                "shortened-text": convert_text(unshortened_text, blog_feed.entries[i].title),
+                "shortened-text": re.sub(r'(?<=[.,])(?=[^/s])', r' ',
+                                         convert_text(unshortened_text,
+                                         blog_feed.entries[i].title)),
                 "picture": img_list,
                 "author": blog_feed.entries[i].author,
                 "link": blog_feed.entries[i].link,
