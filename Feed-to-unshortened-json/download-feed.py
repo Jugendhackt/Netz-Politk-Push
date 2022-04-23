@@ -20,14 +20,14 @@ def feed_noname(url, path):
         if not blog_feed.entries[i].id.split("=")[1] in dict.keys():
             dict[blog_feed.entries[i].id.split("=")[1]] = {
                 "title": blog_feed.entries[i].title,
-                "unshorted-text": BeautifulSoup(str(blog_feed.entries[i].content), features="html.parser").get_text(),
+                "unshorted-text": BeautifulSoup(str(blog_feed.entries[i].content[0]["value"]), features="html.parser").get_text(),
                 "link": blog_feed.entries[i].link,
                 "date": blog_feed.entries[i].published
             }
         write_json_data(dict, path)
 
 
-feed_noname("https://netzpolitik.org/feed", "unshorted.json")
+feed_noname("https://netzpolitik.org/feed", "unshortened.json")
 
 """
 idea for all RSS urls...
