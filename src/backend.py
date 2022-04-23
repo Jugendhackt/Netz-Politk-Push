@@ -1,25 +1,30 @@
 import feedparser
 import json
 import requests
+import re
 from summarizer import summarize
 from bs4 import BeautifulSoup
 from datetime import datetime
 
 
 def send_notification(data):
+    text = "shortened-text"
+    if(len(data["unshortened-text"]) < len(data["shortened-text"])
+            or len(data["unshortened-text"]) < 250):
+        text = "unshortened-text"
     requests.post("https://ntfy.sh/Netz-Politik-News-Push",
-                  data=data["shorted-text"].encode("utf-8"),
+                  data=data[text].encode("utf-8"),
                   headers={
-                      "Title": data["title"].encode("utf-8"),
-                      "Priority": "urgent",
-                      "Tags": "warning",
-                      "Click": data["link"].encode("utf-8"),
-                      "date": data["date"].encode("utf-8")
+                          "Title": data["title"].encode("utf-8"),
+                          "Priority": "urgent",
+                          "Tags": "warning",
+                          "Click": data["link"].encode("utf-8"),
+                          "date": data["date"].encode("utf-8")
                       })
 
 
 def convert_text(text, title):
-    ar_short = summarize(title, text, count=3)
+    ar_short = summarize(title, text, count=2)
     return ''.join(str(e) for e in ar_short)
 
 
@@ -41,12 +46,20 @@ def feed_noname(url):
         if not blog_feed.entries[i].id.split("=")[1] in dict.keys():
             beautifulsoup_object = BeautifulSoup(
                 str(blog_feed.entries[i].content[0]["value"]), features="html.parser")
-            unshortened_text = beautifulsoup_object.get_text()
+            if beautifulsoup_object.find("figure") is not None:
+                beautifulsoup_object.find(
+                    "figure").decompose()
+                unshortened_text = re.sub(
+                    r'(?<=[.,])(?=[^/s])', r' ', beautifulsoup_object.get_text())
+            img_source = beautifulsoup_object.find_all("img")
+            img_list = []
+            for img in img_source:
+                img_list.append(img["src"])
             dict[blog_feed.entries[i].id.split("=")[1]] = {
                 "title": blog_feed.entries[i].title,
                 "unshortened-text": unshortened_text,
-                "shorted-text": convert_text(unshortened_text, blog_feed.entries[i].title),
-                "picture": "beautifulsoup_object",
+                "shortened-text": convert_text(unshortened_text, blog_feed.entries[i].title),
+                "picture": img_list,
                 "author": blog_feed.entries[i].author,
                 "link": blog_feed.entries[i].link,
                 "date": blog_feed.entries[i].published
@@ -59,7 +72,7 @@ def feed_noname(url):
         date_sorted_list_keys.sort(key=lambda item: item, reverse=True)
         for i in range(len(dict)-len(dict_old)):
             send_notification(dict[date_sorted_list_keys[i][1]])
-        write_json_data(date_sorted_list_keys, "sorted_keys.json")
+        write_json_data(str(date_sorted_list_keys), "sorted_keys.json")
     write_json_data(dict, "unshortened.json")
 
 
