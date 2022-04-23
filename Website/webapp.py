@@ -2,13 +2,13 @@ from flask import Flask
 from flask import render_template
 import json
 
-port = 1929
+port = 80
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    data = json.load(open('../unshortened.json', 'r'))
+    data = json.load(open('../data.json', 'r'))
     articlesToShow = [
         {
             "id": "1",

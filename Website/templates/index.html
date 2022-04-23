@@ -37,14 +37,16 @@
             <a class="readmorelink" href="{{article.url}}">Mehr dazu lesen</a>
         </article>
         {% endfor %}-->
-        {% for id in articlesToShow.keys(): %}
-        <article id="{{id}}" class="row">
-            <h2>{{articlesToShow[id]["title"]}}</h2>
-            <img class="col-xs-12 col-md-5" src="https://cdn.netzpolitik.org/wp-upload/2022/04/eu_apps_flagge-860x484.jpg" />
-            <p class="col-md-7">{{articlesToShow[id]["shortened-text"]}}</p>
-            <a href="{{articlesToShow[id]["link"]}}">Mehr dazu lesen</a>
-        </article>
-        {% endfor %}
+        <div class="articles-wrapper">
+            {% for id in articlesToShow.keys(): %}
+            <article id="{{id}}" class="row">
+                <h2>{{articlesToShow[id]["title"]}}</h2>
+                <div class="col-xs-12 col-md-5"><img src="{{articlesToShow[id]["picture"][0]}}" /></div>
+                <p class="col-md-7">{{articlesToShow[id]["shortened-text"]}}</p>
+                <a href="{{articlesToShow[id]["link"]}}">Mehr dazu lesen</a>
+            </article>
+            {% endfor %}
+        </div>
         <div class="col-xs-12 text-center">
             <a href="https://f-droid.org/packages/io.heckel.ntfy/">
                 <button type="button" class="btn btn-danger">Subscribe</button>
