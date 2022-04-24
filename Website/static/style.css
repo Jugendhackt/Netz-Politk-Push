@@ -45,15 +45,9 @@ article img {
     max-width: 100%;
 }
 
-article div {
-    display: flex;
-    align-items: baseline;
-}
-
-article div p {
+article span {
     white-space: nowrap;
     font-style: italic;
-
 }
 
 article a {

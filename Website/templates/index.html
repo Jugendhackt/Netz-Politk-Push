@@ -40,12 +40,9 @@
         <div class="articles-wrapper">
             {% for id in articlesToShow.keys(): %}
             <article id="{{id}}" class="row">
-                <div style="width: 100%;">
-                    <h2>{{articlesToShow[id]["title"]}}</h2>
-                    <p style="text-align: right;">von {{articlesToShow[id]["author"]}}</p>
-                </div>
-                <div class="col-xs-12 col-md-5"><img src="{{articlesToShow[id]["picture"][0]}}" /></div>
-                <p class="col-md-7">{{articlesToShow[id]["shortened-text"]}}</p>
+                <h2>{{articlesToShow[id]["title"]}}</h2>
+                <div class="col-xs-12 col-md-5"><img loading="lazy" src="{{articlesToShow[id]["picture"][0]}}" /></div>
+                <p class="col-md-7">{{articlesToShow[id]["shortened-text"]}}<span> von {{articlesToShow[id]["author"]}}</span></p>
                 <a href="{{articlesToShow[id]["link"]}}">Mehr dazu lesen</a>
             </article>
             {% endfor %}
