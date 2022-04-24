@@ -37,19 +37,21 @@
             <a class="readmorelink" href="{{article.url}}">Mehr dazu lesen</a>
         </article>
         {% endfor %}-->
-        {% for id in articlesToShow.keys(): %}
-        <article id="{{id}}" class="row">
-
-            <div>
-                <h2>{{articlesToShow[id]["title"]}}</h2>
-                <p>von Name</p>
-            </div>
-            <p>{{articlesToShow[id]["unshorted-text"]}}</p> <!-- To Change!! -->
-            <a class="readmorelink" href="{{articlesToShow[id][" link"]}}">Mehr dazu lesen</a>
-        </article>
-        {% endfor %}
+        <div class="articles-wrapper">
+            {% for id in articlesToShow.keys(): %}
+            <article id="{{id}}" class="row">
+                <div>
+                    <h2>{{articlesToShow[id]["title"]}}</h2>
+                    <p>von Name</p>
+                </div>
+                <div class="col-xs-12 col-md-5"><img src="{{articlesToShow[id]["picture"][0]}}" /></div>
+                <p class="col-md-7">{{articlesToShow[id]["shortened-text"]}}</p>
+                <a href="{{articlesToShow[id]["link"]}}">Mehr dazu lesen</a>
+            </article>
+            {% endfor %}
+        </div>
         <div class="col-xs-12 text-center">
-            <a href="https://f-droid.org/packages/io.heckel.ntfy/">
+            <a href="market://details?id=io.heckel.ntfy">
                 <button type="button" class="btn btn-danger">Subscribe</button>
             </a>
         </div>
@@ -58,7 +60,6 @@
         Entstanden bei Jugend hackt in Dresden 2022
     </footer>
 
-    <div id="everything"></div>
     <script src="static/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 </body>
 
