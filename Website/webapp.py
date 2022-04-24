@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template
 import json
 
-port = 80
+port = 8080
 
 app = Flask(__name__)
 
