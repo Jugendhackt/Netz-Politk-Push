@@ -40,9 +40,9 @@
         <div class="articles-wrapper">
             {% for id in articlesToShow.keys(): %}
             <article id="{{id}}" class="row">
-                <div>
+                <div style="width: 100%;">
                     <h2>{{articlesToShow[id]["title"]}}</h2>
-                    <p>von Name</p>
+                    <p style="text-align: right;">von {{articlesToShow[id]["author"]}}</p>
                 </div>
                 <div class="col-xs-12 col-md-5"><img src="{{articlesToShow[id]["picture"][0]}}" /></div>
                 <p class="col-md-7">{{articlesToShow[id]["shortened-text"]}}</p>
