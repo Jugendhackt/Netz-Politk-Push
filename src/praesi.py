@@ -7,14 +7,17 @@ try:
 except:
     pass
 
+num_notification = 2
+
+
 
 data_url = 'data/data.json'
 
-def read_data(data_url):
+def read_data(data_url, num_notification):
     with open (data_url, 'r') as data:
         jsn = json.load(data)
     keys = list(jsn.keys())
-    for i in range(len(keys)):
+    for i in range(num_notification):
         ndata = jsn[keys[i]]
         send_notification(ndata, keys)
 
@@ -40,5 +43,4 @@ def send_notification(data, id):
 
 
 
-print(read_data(data_url))
-send_notification()
+print(read_data(data_url, num_notification))
