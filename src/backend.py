@@ -2,6 +2,7 @@ import feedparser
 import json
 import requests
 import re
+import csv
 from summarizer import summarize
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -39,6 +40,12 @@ def write_json_data(str, path):
         json.dump(str, data)
 
 
+def write_csv_data(list, path):
+    with open(path, 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerows(list)
+
+
 def feed_noname(url):
     try:
         with open("data.json", "r") as data:
@@ -70,7 +77,7 @@ def feed_noname(url):
                                            unshortened_text),
                 "shortened-text": re.sub(r'(?<=[.,])(?=[^/s])', r' ',
                                          convert_text(unshortened_text,
-                                         blog_feed.entries[i].title)),
+                                                      blog_feed.entries[i].title)),
                 "picture": img_list,
                 "author": blog_feed.entries[i].author,
                 "link": blog_feed.entries[i].link,
@@ -85,7 +92,7 @@ def feed_noname(url):
         for i in range(len(dict)-len(dict_old)):
             send_notification(
                 dict[date_sorted_list_keys[i][1]], date_sorted_list_keys[i][1])
-        write_json_data(str(date_sorted_list_keys), "sorted_keys.json")
+        write_csv_data(date_sorted_list_keys, "sorted_keys.csv")
     write_json_data(dict, "data.json")
 
 
