@@ -1,5 +1,6 @@
 import json
 import requests
+import time
 
 url = ""
 try:
@@ -20,6 +21,7 @@ def read_data(data_url, num_notification):
     for i in range(num_notification):
         ndata = jsn[keys[i]]
         send_notification(ndata, keys)
+        time.sleep(3)
 
 
 
