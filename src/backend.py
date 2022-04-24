@@ -3,12 +3,15 @@ import json
 import requests
 import re
 import csv
+import os
 from summarizer import summarize
 from bs4 import BeautifulSoup
 from datetime import datetime
-
-
-url = "http://192.168.2.222:1929"
+url = ""
+try:
+    url = os.environ["URL"]
+except:
+    pass
 
 
 def send_notification(data, id):
