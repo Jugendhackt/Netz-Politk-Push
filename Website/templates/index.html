@@ -17,33 +17,13 @@
     </header>
 
     <div class="container">
-        <!-- Beispiel Article:
-            <article id="example" class="row">
-            <h2>Artikelüberschrift 1</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-                et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-                rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
-            <p>Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-            <a class="readmorelink" href="https://netzpolitik.org">Mehr dazu lesen</a>
-        </article>
-        -->
-        <!--{% for article in articlesToShow: %}
-        <article id="{{article.id}}" class="row">
-            <h2>{{article.headline}}</h2>
-            <p>{{article.text}}</p>
-            <a class="readmorelink" href="{{article.url}}">Mehr dazu lesen</a>
-        </article>
-        {% endfor %}-->
         <div class="articles-wrapper">
-            {% for id in articlesToShow.keys(): %}
+            {% for id in idsToShow: %}
             <article id="{{id}}" class="row">
-                <h2>{{articlesToShow[id]["title"]}}</h2>
-                <div class="col-xs-12 col-md-5"><img loading="lazy" src="{{articlesToShow[id]["picture"][0]}}" /></div>
-                <p class="col-md-7">{{articlesToShow[id]["shortened-text"]}}<span> von {{articlesToShow[id]["author"]}}</span></p>
-                <a href="{{articlesToShow[id]["link"]}}">Mehr dazu lesen</a>
+                <h2>{{allArticles[id]["title"]}}</h2>
+                <div class="col-xs-12 col-md-5"><img loading="lazy" src="{{allArticles[id]["picture"][0]}}" /></div>
+                <p class="col-md-7">{{allArticles[id]["shortened-text"]}}<span> von {{allArticles[id]["author"]}}</span></p>
+                <a href="{{allArticles[id]["link"]}}">Mehr dazu lesen</a>
             </article>
             {% endfor %}
         </div>
