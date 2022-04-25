@@ -7,6 +7,26 @@ import os
 from summarizer import summarize
 from bs4 import BeautifulSoup
 from datetime import datetime
+
+
+def get_path():
+    for i in range(len(__file__)):
+        if __file__[-i-1] == os.path.normcase("/"):
+            return(str(__file__[0:-i]))
+    return("")
+
+
+def write_json_data(str, name):
+    with open(get_path()+name, "w") as data:
+        json.dump(str, data)
+
+
+def write_csv_data(list, name):
+    with open(get_path()+name, 'w') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerows(list)
+
+
 url = ""
 try:
     url = os.environ["URL"]
@@ -38,20 +58,9 @@ def convert_text(text, title):
     return ''.join(str(e) for e in ar_short)
 
 
-def write_json_data(str, path):
-    with open(path, "w") as data:
-        json.dump(str, data)
-
-
-def write_csv_data(list, path):
-    with open(path, 'w') as csvfile:
-        csvwriter = csv.writer(csvfile)
-        csvwriter.writerows(list)
-
-
 def feed_noname(url):
     try:
-        with open("data.json", "r") as data:
+        with open(get_path()+"data.json", "r") as data:
             dict = json.loads(data.read())
     except:
         write_json_data({}, "data.json")

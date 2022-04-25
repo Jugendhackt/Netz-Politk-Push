@@ -1,1 +1,1 @@
-*/1 * * * * /home/appuser/ python backend.py
+* * * * * root /root/event.sh

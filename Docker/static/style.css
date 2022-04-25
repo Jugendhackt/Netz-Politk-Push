@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    min-height: 100vh;
+    border-width: 3mm;
+    border-color: black;
+    border-style: solid;
+    border-radius: 4.5mm;
+    outline-width: 3mm;
+    outline-color: black;
+    outline-style: solid;
+    background-color: rgba(0, 0, 0, 0.041);
+}
+
+.container {
+    margin-bottom: 8.8mm;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.articles-wrapper {
+    margin: 1.5mm;
+}
+
+article {
+    border-width: 0.5mm;
+    border-style: inset;
+    border-color: rgb(43, 19, 0);
+    border-radius: 2mm;
+    background-color: rgba(231, 141, 67, 0.116);
+    margin: 10px;
+    padding: 10px;
+    margin-left: 1mm;
+    margin-right: 1mm;
+}
+
+article img {
+    border-style: solid;
+    border-color: black;
+    border-width: 0.5mm;
+    border-radius: 1.5mm;
+    max-width: 100%;
+}
+
+article span {
+    white-space: nowrap;
+    font-style: italic;
+}
+
+article a {
+    font-size: 85%;
+    text-align: right;
+}
+
+footer {
+    background-color: lightgrey;
+    position: fixed;
+    height: 6.3mm;
+    width: calc(100vw - 4mm);
+    bottom: 2mm;
+    margin: 0;
+    visibility: hidden;
+}
+
+footer:hover {
+    background-color: lightgrey;
+    position: fixed;
+    height: 6.3mm;
+    width: calc(100vw - 4mm);
+    bottom: 2mm;
+    margin: 0;
+}

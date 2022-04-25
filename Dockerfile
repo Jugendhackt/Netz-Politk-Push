@@ -7,16 +7,14 @@ RUN apt update && apt install -y --no-install-recommends gcc cron
 FROM base AS runtime
 RUN useradd --create-home appuser
 WORKDIR /home/appuser
-COPY Pipfile .
+RUN echo 'su appuser -c "python /home/appuser/backend.py"' > '/root/event.sh'
+RUN chmod +x /root/event.sh
 COPY crontab /etc/cron.d/crontab
 RUN chmod 0644 /etc/cron.d/crontab
-RUN /usr/bin/crontab /etc/cron.d/crontab
+RUN crontab /etc/cron.d/crontab
+
 USER appuser
-RUN pipenv install --deploy
-RUN pip install flask
-COPY ./src/backend.py .
-COPY ./Website ./Website
-
-
-ENTRYPOINT ["python","Website/webapp.py"]
-CMD ["cron","-f"]
+RUN pip install flask feedparser requests summarizer bs4 datetime
+COPY Docker/ .
+CMD cron
+ENTRYPOINT ["python","webapp.py"]
