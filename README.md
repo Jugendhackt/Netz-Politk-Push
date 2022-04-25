@@ -3,10 +3,12 @@ Ein Programm, das Netzpolitk news für Menschen zu verfügung stelt mittels Push
 
 
 Gebrauchte Komponenten:
+  - flask
   - feedparser
+  - requests
+  - summarizer
+  - bs4
+  - datetime
 
 
 ## Backend
-
-Python Abhänigkeiten installieren:
-$ pipenv install
