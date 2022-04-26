@@ -111,6 +111,3 @@ def feed_noname(url):
 
 def everything():
     feed_noname("https://netzpolitik.org/feed")
-
-
-everything()
