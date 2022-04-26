@@ -15,3 +15,6 @@ Gebrauchte Python Komponenten:
   - apscheduler
 
 ## Installation
+
+## Bekannte Bugs
+  - sendet 2 Mitteilung anstatt einer.
